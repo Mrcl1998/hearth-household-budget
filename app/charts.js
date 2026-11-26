@@ -44,10 +44,11 @@ export function drawDonut(canvas, slices) {
   ctx.fill();
   ctx.globalCompositeOperation = 'source-over';
   ctx.fillStyle = '#22302a';
-  ctx.font = '800 21px "Segoe UI", system-ui, sans-serif';
+  const label = slices.totalLabel ?? '';
+  ctx.font = `800 ${label.length > 10 ? 17 : 21}px "Segoe UI", system-ui, sans-serif`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(slices.totalLabel ?? '', cx, cy - 9);
+  ctx.fillText(label, cx, cy - 9);
   ctx.fillStyle = '#6b756e';
   ctx.font = '12px "Segoe UI", system-ui, sans-serif';
   ctx.fillText(slices.totalSub ?? '', cx, cy + 13);

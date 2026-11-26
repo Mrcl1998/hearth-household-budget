@@ -3,7 +3,7 @@
 
 import {
   CURRENT_MONTH, colorFor, fmt, fmtSigned, loadStore, monthName, monthShort,
-  saveStore, spentByCategory, totalIncome, totalPlanned, totalSavedThisMonth,
+  resetStore, saveStore, spentByCategory, totalIncome, totalPlanned, totalSavedThisMonth,
   totalSpent, uid,
 } from './data.js';
 import { drawDonut, drawMonthBars } from './charts.js';
@@ -180,7 +180,12 @@ function viewPlanner() {
       </form>
       <p class="small muted" style="margin:12px 0 0">Menghapus kategori tidak menghapus transaksinya — transaksi lama tetap tercatat.</p>
     </section>
-  </div>`;
+  </div>
+  <section class="card mt">
+    <h2>Mulai dari awal</h2>
+    <p class="small muted" style="margin:0 0 12px">Sudah mencoba-coba dan ingin kembali ke angka contoh keluarga Hartono? Tombol ini menghapus semua perubahan Anda dan mengembalikan pemasukan, anggaran, transaksi, tujuan, dan tagihan ke angka contoh semula.</p>
+    <button class="btn-ghost" id="reset-data">Reset ke angka contoh</button>
+  </section>`;
 }
 
 function afterPlanner() {
@@ -224,6 +229,12 @@ function afterPlanner() {
     if (store.plan.some((c) => c.name.toLowerCase() === name.toLowerCase())) { toast('Kategori itu sudah ada.'); return; }
     store.plan.push({ id: uid('cat'), name, planned });
     toast('Kategori baru ditambahkan.'); rerender();
+  });
+  document.getElementById('reset-data')?.addEventListener('click', () => {
+    if (!window.confirm('Kembalikan semua angka ke contoh keluarga Hartono? Semua perubahan Anda akan hilang.')) return;
+    store = resetStore();
+    toast('Angka contoh dikembalikan.');
+    render();
   });
 }
 
