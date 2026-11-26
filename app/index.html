@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearth Budget — Buku Anggaran Rumah Tangga</title>
+<meta name="description" content="Hearth Budget: a household budget book that runs entirely in the browser. Plan income and spending, track every transaction, save toward goals, never miss a bill.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#/">
+      <span class="brand-mark" aria-hidden="true">⌂</span>
+      <span class="brand-text"><strong>Hearth Budget</strong><small>Buku anggaran rumah tangga</small></span>
+    </a>
+    <nav class="mainnav" aria-label="Navigasi utama">
+      <a href="#/" data-nav="dashboard">Dasbor</a>
+      <a href="#/planner" data-nav="planner">Perencana Anggaran</a>
+      <a href="#/transactions" data-nav="transactions">Transaksi</a>
+      <a href="#/goals" data-nav="goals">Tabungan &amp; Tujuan</a>
+      <a href="#/bills" data-nav="bills">Tagihan</a>
+      <a href="#/month" data-nav="month">Laporan Bulanan</a>
+    </nav>
+    <div class="household">
+      <span class="household-label">Rumah tangga</span>
+      <strong>Keluarga Hartono</strong>
+      <span class="household-month" id="household-month"></span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="view" aria-live="polite"></main>
+
+<footer class="wrap footer">
+  <p><strong>Hearth Budget</strong> — semua data tersimpan di peramban Anda sendiri (localStorage). Tidak ada akun, tidak ada server, tidak ada data yang keluar dari perangkat ini.</p>
+  <p class="footer-note">Angka contoh keluarga Hartono, November 2026. Ubah apa pun: semua angka bisa diedit dan langsung tersimpan.</p>
+</footer>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
